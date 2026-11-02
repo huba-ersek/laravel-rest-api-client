@@ -8,3 +8,9 @@
     padding-right: 30px;
     border: 1px solid black;
 }
+
+.error {
+    color: red;
+    background-color: lightpink;
+    padding: 10px;
+}

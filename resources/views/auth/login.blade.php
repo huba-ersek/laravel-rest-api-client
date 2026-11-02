@@ -9,14 +9,14 @@
 </head>
 <body>
     <div id="login-div">
-        @if(session('error'))
-            <div>
-                {{ session('error') }}
-            </div>
-        @endif
         <h2>Bejelentkezés</h2>
         <form action="{{ route('login') }}" method="POST">
             @csrf
+            @if(session('error'))
+                <div class="error">
+                    {{ session('error') }}
+                </div>
+            @endif
             <label for="email">E-mail cím </label>
             <input id="email" name="email" type="email">
             <br>

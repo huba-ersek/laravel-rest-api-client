@@ -21,7 +21,7 @@ class CountyController extends Controller
             return redirect()->route('counties.index')->with('error', 'Hiba az adatok lekérdezése közben.');
         }
 
-        $counties = $response->json();
+        $counties = json_decode($response->body(), false) ?? [];
         return view('counties.index', compact('counties'));
     }
 

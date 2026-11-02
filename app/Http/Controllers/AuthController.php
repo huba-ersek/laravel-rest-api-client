@@ -14,16 +14,16 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $response = Http::api()->post('/login', $request->only('email', 'password'));
+        $response = Http::api()->post('/users/login', $request->only('email', 'password'));
 
         if ($response->failed())
         {
-            return back()->with('error', 'Hibás e-mail vagy jelszó!');
+            return back()->with('error', $response->json('message'));
         }
 
         session(['api_token' => $response->json('token')]);
 
-        return redirect()->route('dashboard');
+        return view('dashboard');
     }
 
     public function logout()

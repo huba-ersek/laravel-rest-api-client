@@ -30,6 +30,6 @@ class AuthController extends Controller
     {
         session()->forget('api_token');
 
-        return redirect()->route('login');
+        return redirect()->route('login-page');
     }
 }

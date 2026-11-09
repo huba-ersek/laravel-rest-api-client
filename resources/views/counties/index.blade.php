@@ -2,17 +2,17 @@
 
 @section('content')
 
-<table>
+<table class="content">
     <tr>
-        <th>#</th>
-        <th>Név</th>
-        <th>Címer</th>
+        <th class="content">#</th>
+        <th class="content">Név</th>
+        <th class="content">Címer</th>
     </tr>
     @foreach ($counties as $county)
-    <tr>
-        <td>{{ $county->id }}</td>
-        <td>{{ $county->name }}</td>
-        <td><img src="{{ $county->arms }}"></td>
+    <tr class="content-row">
+        <td class="content"><b>{{ $county->id }}</b></td>
+        <td class="content">{{ $county->name }}</td>
+        <td class="content"><img class="county-arms" src="{{ $county->arms }}" alt="{{ $county->name }} megye címere"></td>
     </tr>
     @endforeach
 </table>

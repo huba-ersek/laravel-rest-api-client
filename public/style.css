@@ -14,3 +14,18 @@
     background-color: lightpink;
     padding: 10px;
 }
+
+.content {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.content-row:hover {
+    background-color: lightgrey;
+}
+
+.county-arms {
+    max-width: 100px;
+}

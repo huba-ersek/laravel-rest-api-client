@@ -46,7 +46,7 @@ class CityController extends Controller
 
         $cities = json_decode($cityResponse->body(), false)?->cities ?? [];
         $counties = json_decode($countyResponse->body(), false)?->counties ?? [];
-        return view('cities.index', compact('cities', 'counties'));
+        return view('cities.index', compact('cities', 'counties', 'name', 'countyId'));
     }
 
     /**

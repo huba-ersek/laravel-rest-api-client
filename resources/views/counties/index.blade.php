@@ -6,7 +6,7 @@
 
 <form action="" method="GET">
     <label for="name">Megye neve: </label>
-    <input type="text" id="name" name="name">
+    <input type="text" id="name" name="name" value="{{ old('name', $name) }}">
     <button type="submit">Keresés</button>
 </form>
 

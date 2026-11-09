@@ -6,13 +6,13 @@
 
 <form action="" method="GET">
     <label for="name">Város neve: </label>
-    <input type="text" id="name" name="name">
+    <input type="text" id="name" name="name" value="{{ old('name', $name) }}">
     <br>
     <label for="county">Megye: </label>
     <select id="county" name="county_id">
         <option value=""></option>
         @foreach ($counties as $county)
-        <option value="{{ $county->id }}">{{ $county->name }}</option>
+        <option value="{{ $county->id }}" @selected(old('county_id', $countyId) == $county->id)>{{ $county->name }}</option>
         @endforeach
     </select>
     <br>

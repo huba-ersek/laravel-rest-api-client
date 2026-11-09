@@ -25,7 +25,7 @@ class CountyController extends Controller
         }
 
         $counties = json_decode($response->body(), false)?->counties ?? [];
-        return view('counties.index', compact('counties'));
+        return view('counties.index', compact('counties', 'name'));
     }
 
     /**

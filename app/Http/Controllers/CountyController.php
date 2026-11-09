@@ -72,6 +72,10 @@ class CountyController extends Controller
             return back()->with('error', 'Nem sikerült a megye adatait lekérni.');
         }
         $county = json_decode($response->body(), false)?->counties[0];
+        if ($county === NULL)
+        {
+            return back()->with('error', 'Nincs ilyen megye.');
+        }
         return view('counties.edit', compact('county'));
     }
 

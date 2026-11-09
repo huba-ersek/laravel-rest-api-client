@@ -9,19 +9,19 @@ class CountyController extends Controller
 {
     public function index(Request $request)
     {
-        $name = $request
-            ->withToken(session('api_token'))
-            ->get('name');
+        $name = $request->get('name');
         $url = $name ? '/counties?name=' . urlencode($name) : '/counties';
 
-        $response = Http::api()->get($url);
+        $response = Http::api()
+            ->withToken(session('api_token'))
+            ->get($url);
 
         if ($response->failed())
         {
             return redirect()->route('counties.index')->with('error', 'Hiba az adatok lekérdezése közben.');
         }
 
-        $counties = json_decode($response->body(), false) ?? [];
+        $counties = json_decode($response->body(), false)?->counties ?? [];
         return view('counties.index', compact('counties'));
     }
 

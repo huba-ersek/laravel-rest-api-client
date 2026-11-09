@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CountyController;
 
 Route::get('/', function () { return redirect()->route('login'); });
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login-page');
@@ -14,3 +15,5 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/counties', [CountyController::class, 'index'])->name('counties.index');

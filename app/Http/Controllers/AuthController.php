@@ -21,7 +21,7 @@ class AuthController extends Controller
             return back()->with('error', $response->json('message'));
         }
 
-        session(['api_token' => $response->json('token')]);
+        session(['api_token' => $response->json('user.token')]);
 
         return view('dashboard');
     }

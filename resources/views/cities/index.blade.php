@@ -4,6 +4,21 @@
 
 <h1>Városok</h1>
 
+<form action="" method="GET">
+    <label for="name">Város neve: </label>
+    <input type="text" id="name" name="name">
+    <br>
+    <label for="county">Megye: </label>
+    <select id="county" name="county_id">
+        <option value=""></option>
+        @foreach ($counties as $county)
+        <option value="{{ $county->id }}">{{ $county->name }}</option>
+        @endforeach
+    </select>
+    <br>
+    <button type="submit">Keresés</button>
+</form>
+
 <table class="content">
     <tr>
         <th class="content">#</th>

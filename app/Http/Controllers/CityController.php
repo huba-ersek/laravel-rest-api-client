@@ -32,17 +32,21 @@ class CityController extends Controller
 
         $url = self::createUrl($name, $countyId);
 
-        $response = Http::api()
+        $cityResponse = Http::api()
             ->withToken(session('api_token'))
             ->get($url);
+        $countyResponse = Http::api()
+            ->withToken(session('api_token'))
+            ->get('/counties');
 
-        if ($response->failed())
+        if ($cityResponse->failed() || $countyResponse->failed())
         {
             return redirect()->route('cities.index')->with('error', 'Hiba az adatok lekérdezése közben.');
         }
 
-        $cities = json_decode($response->body(), false)?->cities ?? [];
-        return view('cities.index', compact('cities'));
+        $cities = json_decode($cityResponse->body(), false)?->cities ?? [];
+        $counties = json_decode($countyResponse->body(), false)?->counties ?? [];
+        return view('cities.index', compact('cities', 'counties'));
     }
 
     /**

@@ -21,6 +21,17 @@
         </nav>
     </header>
     <hr>
+        @if(session('error'))
+            <div class="error">
+                {{ session('error') }}
+            </div>
+        @else
+        @if(session('success'))
+            <div class="success">
+                {{ session('success') }}
+            </div>
+        @endif
+        @endif
         @yield('content')
     <hr>
     <footer>

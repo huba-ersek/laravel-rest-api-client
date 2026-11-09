@@ -33,7 +33,7 @@ class CountyController extends Controller
      */
     public function create()
     {
-        //
+        return view('counties.create');
     }
 
     /**
@@ -64,7 +64,15 @@ class CountyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $response = Http::api()
+            ->withToken(session('api_token'))
+            ->get("/counties?id=$id");
+        if ($response->failed())
+        {
+            return back()->with('error', 'Nem sikerült a megye adatait lekérni.');
+        }
+        $county = json_decode($response->body(), false)?->counties[0];
+        return view('counties.edit', compact('county'));
     }
 
     /**

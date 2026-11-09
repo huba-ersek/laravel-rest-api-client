@@ -15,6 +15,12 @@
     padding: 10px;
 }
 
+.success {
+    color: green;
+    background-color: lightgreen;
+    padding: 10px;
+}
+
 .content {
     border: 1px solid black;
     border-collapse: collapse;
@@ -28,4 +34,8 @@
 
 .county-arms {
     max-width: 100px;
+}
+
+.delete-btn {
+    color: red;
 }

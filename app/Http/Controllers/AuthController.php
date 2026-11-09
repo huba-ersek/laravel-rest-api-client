@@ -23,7 +23,7 @@ class AuthController extends Controller
 
         session(['api_token' => $response->json('user.token')]);
 
-        return view('dashboard');
+        return redirect()->route('dashboard');
     }
 
     public function logout()

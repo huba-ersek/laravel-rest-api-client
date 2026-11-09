@@ -2,6 +2,8 @@
 
 @section('content')
 
+<h1>Megyék</h1>
+
 <form action="" method="GET">
     <label for="name">Megye neve: </label>
     <input type="text" id="name" name="name">

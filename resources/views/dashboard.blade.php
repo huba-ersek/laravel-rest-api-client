@@ -17,6 +17,7 @@
             <ul class="navbar">
                 <li><a href="{{ route('dashboard') }}">Főoldal</a></li>
                 <li><a href="{{ route('counties.index') }}">Megyék</a></li>
+                <li><a href="{{ route('cities.index') }}">Városok</a></li>
             </ul>
         </nav>
     </header>

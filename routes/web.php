@@ -16,4 +16,4 @@ Route::get('/dashboard', function () {
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/counties', [CountyController::class, 'index'])->name('counties.index');
+Route::resource('/counties', CountyController::class);

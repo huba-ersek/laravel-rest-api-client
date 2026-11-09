@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Http;
 
 class CountyController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index(Request $request)
     {
         $name = $request->get('name');
@@ -25,6 +28,17 @@ class CountyController extends Controller
         return view('counties.index', compact('counties'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $response = Http::api()
@@ -37,6 +51,25 @@ class CountyController extends Controller
         return redirect()->route('counties.index')->with('success', 'Megye sikeresen létrehozva.');
     }
 
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, $id)
     {
         $response = Http::api()
@@ -49,6 +82,9 @@ class CountyController extends Controller
         return redirect()->route('counties.index')->with('success', 'Megye sikeresen módosítva.');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy($id)
     {
         $response = Http::api()

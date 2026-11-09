@@ -2,6 +2,12 @@
 
 @section('content')
 
+<form action="" method="GET">
+    <label for="name">Megye neve: </label>
+    <input type="text" id="name" name="name">
+    <button type="submit">Keresés</button>
+</form>
+
 <table class="content">
     <tr>
         <th class="content">#</th>
@@ -19,7 +25,7 @@
             <form action="{{ route('counties.destroy', $county->id) }}" method="POST">
                 @csrf
                 @method("DELETE")
-                <button class="delete-btn" onclick="return confirm('Biztosan kívánja törölni?')">Töröl</button>
+                <button type="submit" class="delete-btn" onclick="return confirm('Biztosan kívánja törölni?')">Töröl</button>
             </form>
         </td>
     </tr>

@@ -132,6 +132,14 @@ class CityController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $response = Http::api()
+            ->withToken(session('api_token'))
+            ->delete("/cities/$id");
+        if ($response->failed())
+        {
+            return redirect()->route('cities.index')->with('error', 'Nem sikerült a várost törölni.');
+        }
+
+        return redirect()->route('cities.index')->with('success', 'Város sikeresen törölve.');
     }
 }

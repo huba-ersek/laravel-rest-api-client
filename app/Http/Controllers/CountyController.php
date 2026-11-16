@@ -106,6 +106,6 @@ class CountyController extends Controller
         {
             return back()->with('error', 'Nem sikerült a megyét törölni.');
         }
-        return redirect()->route('counties.index')->with('success', 'Megye sikeresen törölve');
+        return redirect()->route('counties.index')->with('success', 'Megye sikeresen törölve.');
     }
 }

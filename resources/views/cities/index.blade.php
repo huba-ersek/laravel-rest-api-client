@@ -35,7 +35,14 @@
         <td class="content">{{ $city->population }}</td>
         <td class="content">{{ $city->zip_code }}</td>
         <td class="content">{{ $city->county->name }}</td>
-        <td class="content"></td>
+        <td class="content">
+            <a href="{{ route('cities.edit', $city->id) }}"><button>Módosít</button></a>
+            <form action="{{ route('cities.destroy', $city->id) }}" method="POST">
+                @csrf
+                @method("DELETE")
+                <button class="delete-btn" type="submit" onclick="return confirm('Biztosan kívánja törölni?')">Törlés</button>
+            </form>
+        </td>
     </tr>
     @endforeach
 </table>

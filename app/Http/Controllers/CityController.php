@@ -95,7 +95,20 @@ class CityController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $cityResponse = Http::api()
+            ->withToken(session('api_token'))
+            ->get("/cities?id=$id");
+        $countyResponse = Http::api()
+            ->withToken(session('api_token'))
+            ->get('/counties');
+        if ($cityResponse->failed() || $countyResponse->failed())
+        {
+            return redirect()->route('cities.index')->with('error', 'Hiba a megyék lekérése közben.');
+        }
+        $city = json_decode($cityResponse->body(), false)?->cities[0];
+        $counties = json_decode($countyResponse->body(), false)?->counties ?? [];
+
+        return view('cities.edit', compact('city', 'counties'));
     }
 
     /**
@@ -103,7 +116,15 @@ class CityController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $response = Http::api()
+            ->withToken(session('api_token'))
+            ->put("/cities/$id", $request->all());
+        if ($response->failed())
+        {
+            return redirect()->route('cities.index')->with('error', 'Nem sikerült módosítani a várost.');
+        }
+
+        return redirect()->route('cities.index')->with('success', 'Város sikeresen módosítva.');
     }
 
     /**

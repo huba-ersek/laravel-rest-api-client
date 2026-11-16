@@ -26,6 +26,7 @@
         <th class="content">Populáció</th>
         <th class="content">Irányítószám</th>
         <th class="content">Megye</th>
+        <th class="content"><a href="{{ route('cities.create') }}"><button>Hozzáad</button></a></th>
     </tr>
     @foreach ($cities as $city)
     <tr class="content-row">
@@ -34,6 +35,7 @@
         <td class="content">{{ $city->population }}</td>
         <td class="content">{{ $city->zip_code }}</td>
         <td class="content">{{ $city->county->name }}</td>
+        <td class="content"></td>
     </tr>
     @endforeach
 </table>

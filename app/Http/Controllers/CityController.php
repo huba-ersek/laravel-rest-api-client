@@ -54,7 +54,16 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        $response = Http::api()
+            ->withToken(session('api_token'))
+            ->get('/counties');
+        if ($response->failed())
+        {
+            return redirect()->route('cities.index')->with('error', 'Hiba a megyék lekérése közben.');
+        }
+        $counties = json_decode($response->body(), false)?->counties ?? [];
+
+        return view('cities.create', compact('counties'));
     }
 
     /**
@@ -62,7 +71,15 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $response = Http::api()
+            ->withToken(session('api_token'))
+            ->post('/cities', $request->all());
+        if ($response->failed())
+        {
+            return redirect()->route('cities.index')->with('error', 'Nem sikerült létrehozni a várost.');
+        }
+
+        return redirect()->route('cities.index')->with('success', 'Város sikeresen létrehozva.');
     }
 
     /**
